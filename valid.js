@@ -1,5 +1,5 @@
 const Valid = () => {
-  if (userDb == null) {
+  if (userDb.type == null) {
     console.log("please enter the details");
   } else {
     if (name == null && name != "") {

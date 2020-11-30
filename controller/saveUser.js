@@ -1,9 +1,9 @@
 import fs from "fs";
 
 const saveUser = (userDb) => {
-  let userData = JSON.stringify({ userDb });
+  // let userData = JSON.stringify({ userDb });
   let path = "text.txt";
-  fs.writeFile(path, userData, { flag: "a" }, (err) => {
+  fs.writeFile(path, userDb, { flag: "a" }, (err) => {
     if (err) {
       console.log(err.message);
     } else {
