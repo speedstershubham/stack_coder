@@ -1,19 +1,13 @@
-const { createUser } = require("./createUser");
 import { checkNameValid } from "../valid/validName.js";
 import { validNumber } from "../valid/checkValidNumber.js";
 import { checkEmail } from "../valid/checkValidEmail.js";
 import { getBloodGroup } from "../valid/checkValidBG.js";
 import { ConvertDateToAge } from "../valid/checkAge.js";
 
-const validUser = () => {
-  const {
-    name,
-    height,
-    weight,
-    bloodGroup,
-    phoneNo,
-    dateOfBirth,
-  } = createUser();
+const validUser = (Userdb) => {
+  const { name, height, weight, bloodGroup, phoneNo, dateOfBirth } = {
+    ...Userdb,
+  };
 
   const isNameValid = checkNameValid(name);
 
@@ -31,7 +25,6 @@ const validUser = () => {
     throw Error("Invalid weight");
   }
 
-  console.log(bloodGroup);
   const isBloodGroupValid = getBloodGroup(bloodGroup);
   console.log(isBloodGroupValid);
 
@@ -42,6 +35,8 @@ const validUser = () => {
 
   const Age = ConvertDateToAge(dateOfBirth);
   console.log(Age);
+
+  return true;
 };
 
 export { validUser };

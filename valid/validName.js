@@ -5,9 +5,9 @@ const checkNameValid = (name) => {
     name.length > 6 &&
     name.length < 20
   ) {
-    return false;
-  } else {
     return true;
+  } else {
+    return false;
   }
 };
 

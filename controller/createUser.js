@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import saveUser from "./saveUser.js";
+import { validUser } from "./validUser.js";
 
 const createUser = async (req, res) => {
   let id = (req.body.id = uuidv4());
@@ -22,10 +23,26 @@ const createUser = async (req, res) => {
     name,
     id,
   });
-  const result = await saveUser(userDb);
-  console.log({ result });
-  if (result) {
-    res.send("Data added");
+  const Userdb = {
+    bloodGroup,
+    weight,
+    height,
+    dateOfBirth,
+    email,
+    phoneNo,
+    postalCode,
+    name,
+    id,
+  };
+  console.log(Userdb);
+
+  const valid = validUser(Userdb);
+  if (valid) {
+    const result = await saveUser(userDb);
+    console.log({ result });
+    if (result) {
+      res.send("Data added");
+    }
   }
 };
 
