@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
-import fs from "fs";
+import saveUser from "./saveUser.js";
 
-const createUser = (req, res) => {
+const createUser = async (req, res) => {
   let id = (req.body.id = uuidv4());
   let name = req.body.name;
   let bloodGroup = req.body.bloodGroup;
@@ -22,18 +22,11 @@ const createUser = (req, res) => {
     name,
     id,
   });
-
-  const saveUser = () => {
-    let path = "text.txt";
-    fs.writeFile(path, userDb, { flag: "a" }, (err) => {
-      if (err) {
-        console.log(err.message);
-      } else {
-        console.log("data is written");
-      }
-    });
-  };
-  saveUser();
+  const result = await saveUser(userDb);
+  console.log({ result });
+  if (result) {
+    res.send("Data added");
+  }
 };
 
 export { createUser };

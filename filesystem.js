@@ -2,17 +2,6 @@ import fs from "fs";
 import readline from "readline";
 
 import { v4 as uuidv4 } from "uuid";
-// import http from "http";
-// const server = http
-//   .createServer((req, res) => {
-//     fs.readFile("text.txt", "utf8", (err, data) => {
-//       res.writeHead(200, { "const-type": "text/plain" });
-
-//       res.write(data);
-//       res.end();
-//     });
-//   })
-//   .listen(3000, () => console.log("server is running on port 3000"));
 
 const user = readline.createInterface({
   input: process.stdin,
